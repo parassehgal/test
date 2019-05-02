@@ -19,6 +19,10 @@ restService.get("/login", function (req, res) {
     
 	//console.log(req);
 	res.write(JSON.stringify(req.query));
+	
+	
+	res.write('<br/><br/><br/><br/>Request came: ');
+	res.write(JSON.stringify(req.query));
 
     res.end();
 });
@@ -26,7 +30,8 @@ restService.get("/login", function (req, res) {
 restService.post("/login", function (req, res) {
     //console.log(req.body);
     if (req.body.username == 'user' && req.body.password == 'password') {
-        res.redirect('https://www.google.com');
+        //var url = new URL(req);
+		res.redirect('https://www.google.com');
     }
     else {
         res.write('<script>alert("Invalid user");</script>');
