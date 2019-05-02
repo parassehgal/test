@@ -13,12 +13,13 @@ restService.use(bodyParser.json());
 restService.get("/login", function (req, res) {
     var s = fs.readFileSync('testlogin.ejs');
 	
-	s.client_id = req.client_id;
-	s.state = req.state;
-	s.response_type = req.response_type;
-	s.redirect_uri = req.redirect_uri;
+	s=s.replace('$client_id',req.query.client_id);
+	s=s.replace('$state',req.query.state);
+	s=s.replace('$response_type',req.query.response_type);
+	s=s.replace('$redirect_uri',req.query.redirect_uri);
 	
-    res.write(fs.readFileSync('testlogin.ejs'));
+	
+    res.write(s);
     res.write('<br/><br/><br/><br/> Body: ');
     
 	res.write(JSON.stringify(req.body));
@@ -37,8 +38,12 @@ restService.get("/login", function (req, res) {
 restService.post("/login", function (req, res) {
     //console.log(req.body);
     if (req.body.username == 'user' && req.body.password == 'password') {
-        		
-		res.redirect('https://oauth-redirect.googleusercontent.com/r/oauth2-5a67a?code=abcdefgh&state=req.state');
+        var code= 'testcode'+(new Date()).getTime();
+		var s=req.body.redirect_uri+'/r/oauth2-5a67a?code='+code+'&state='+req.body.state;
+		res.write(s);
+		res.end();
+		//res.redirect('https://oauth-redirect.googleusercontent.com/r/oauth2-5a67a?code=abcdefgh&state=req.state');
+		// res.redirect(s);
     
 	}
     else {
