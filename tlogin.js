@@ -63,7 +63,7 @@ restService.post("/login", function (req, res) {
 		try
 		{
 			var code= 'testcode'+(new Date()).getTime();
-			var s=req.body.redirectUri+'/r/oauth2-5a67a?code='+code+'&state='+req.body.state;
+			var s=req.body.redirectUri+'?code='+code+'&state='+req.body.state;
 			//res.write(s);
 			//res.end();
 			//res.redirect('https://oauth-redirect.googleusercontent.com/r/oauth2-5a67a?code=abcdefgh&state=req.state');
