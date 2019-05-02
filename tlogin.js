@@ -12,7 +12,10 @@ restService.use(
 restService.use(bodyParser.json());
 restService.get("/login", function (req, res) {
 	try{
-    var s = fs.readFileSync('testlogin.ejs');
+    var a = fs.readFileSync('testlogin.ejs');
+	//res.write(typeof(a)+'<br/>')
+	var s=a.toString();
+	//res.write(typeof(s)+'<br/><br/><br/>')
 	
 	if(typeof(req.query.client_id) !='undefined')
 	{
