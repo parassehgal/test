@@ -86,6 +86,12 @@ restService.post("/token", function (req, res) {
 
 	res.write(req.query);
 	res.end();
+	return res.json({
+		"token_type": "Bearer",
+		"access_token": "abcdefgh123",
+		"refresh_token": "pqrs4567",
+		"expires_in": 6000
+	});
 
 })
 
