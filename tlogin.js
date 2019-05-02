@@ -15,19 +15,19 @@ restService.get("/login", function (req, res) {
 	
 	if(typeof(req.query.client_id) !='undefined')
 	{
-		s=s.replace('$client_id',req.query.client_id);
+		s=s.replace('$client_id',req.query.client_id+'');
 	}
 	if(typeof(req.query.state) !='undefined')
 	{
-		s=s.replace('$state',req.query.state);
+		s=s.replace('$state',req.query.state+'');
 	}
 	if(typeof(req.query.response_type) !='undefined')
 	{
-		s=s.replace('$response_type',req.query.response_type);
+		s=s.replace('$response_type',req.query.response_type+'');
 	}
 	if(typeof(req.query.redirect_uri) !='undefined')
 	{
-		s=s.replace('$redirect_uri',req.query.redirect_uri);
+		s=s.replace('$redirect_uri',req.query.redirect_uri+'');
 	}
 	
 	
