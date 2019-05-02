@@ -99,7 +99,7 @@ restService.post("/token", function (req, res) {
 		"token_type": "Bearer",
 		"access_token": "rtyrur45546",
 		"expires_in": 10000
-	}
+	});
 
 });
 
