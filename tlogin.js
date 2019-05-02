@@ -86,13 +86,21 @@ restService.post("/token", function (req, res) {
 
 	res.write(req.query);
 	res.end();
+	if(req.body.grant_type == 'authorization_code')
 	return res.json({
 		"token_type": "Bearer",
 		"access_token": "abcdefgh123",
 		"refresh_token": "pqrs4567",
 		"expires_in": 6000
 	});
+	else
+	{
+		return res.json({
+		"token_type": "Bearer",
+		"access_token": "rtyrur45546",
+		"expires_in": 10000
+	}
 
-})
+});
 
 restService.listen(process.env.PORT || 9999);
