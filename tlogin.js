@@ -82,4 +82,11 @@ restService.post("/login", function (req, res) {
     }
 });
 
+restService.post("/token", function (req, res) {
+
+	res.write(req.query);
+	res.end();
+
+})
+
 restService.listen(process.env.PORT || 9999);
