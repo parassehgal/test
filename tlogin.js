@@ -11,6 +11,7 @@ restService.use(
 
 restService.use(bodyParser.json());
 restService.get("/login", function (req, res) {
+	try{
     var s = fs.readFileSync('testlogin.ejs');
 	
 	if(typeof(req.query.client_id) !='undefined')
@@ -45,6 +46,11 @@ restService.get("/login", function (req, res) {
 	// res.write(req.query);
 
     res.end();
+	}catch(e)
+	{
+		res.write('Error occurred: '+e);
+		res.end();
+	}
 });
 
 restService.post("/login", function (req, res) {
