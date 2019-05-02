@@ -84,8 +84,8 @@ restService.post("/login", function (req, res) {
 
 restService.post("/token", function (req, res) {
 
-	res.write(req.query);
-	res.end();
+	//res.write(req.query);
+	//res.end();
 	if(req.body.grant_type == 'authorization_code')
 	return res.json({
 		"token_type": "Bearer",
