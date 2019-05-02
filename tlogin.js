@@ -11,6 +11,13 @@ restService.use(
 
 restService.use(bodyParser.json());
 restService.get("/login", function (req, res) {
+    var s = fs.readFileSync('testlogin.ejs');
+	
+	s.client_id = req.client_id;
+	s.state = req.state;
+	s.response_type = req.response_type;
+	s.redirect_uri = req.redirect_uri;
+	
     res.write(fs.readFileSync('testlogin.ejs'));
     res.write('<br/><br/><br/><br/> Body: ');
     
@@ -30,15 +37,10 @@ restService.get("/login", function (req, res) {
 restService.post("/login", function (req, res) {
     //console.log(req.body);
     if (req.body.username == 'user' && req.body.password == 'password') {
-        //var url = new URL(req);
-		var client_id = "795562711541-0cmson2f0dtblc5i8o7s9sdsnnc0rl0i.apps.googleusercontent.com"
-		var n = client_id.localeCompare(req.query.client_id);
-		if(n==0)
-		{
-		res.redirect('https://tutorials.botsfloor.com/how-to-build-a-hello-world-alexa-skill-bcea0d01ee8f');
-		}
-		else res.redirect('https://www.google.com');
-    }
+        		
+		res.redirect('https://oauth-redirect.googleusercontent.com/r/oauth2-5a67a?code=abcdefgh&state=req.state');
+    
+	}
     else {
         res.write('<script>alert("Invalid user");</script>');
         res.end();

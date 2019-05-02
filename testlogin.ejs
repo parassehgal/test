@@ -11,8 +11,12 @@
 	<h1>Login</h1>
 	
 	<form action="/login" method="post">
-		<input type="text" name="username">
-		<input type="password" name="password">
+		Username: <input type="text" name="username">  <br><br><br>
+		Password: <input type="password" name="password"> <br><br><br><br>
+		<input type="hidden" name="clientId" value="$client_id">
+		<input type="hidden" name="state" value="$state">
+		<input type="hidden" name="responseType" value="$response_type">
+		<input type="hidden" name="redirectUri" value="$redirect_uri">
 		<input type="submit" value="Login">
 	</form>
 	
