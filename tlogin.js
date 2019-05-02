@@ -21,8 +21,8 @@ restService.get("/login", function (req, res) {
 	res.write(JSON.stringify(req.query));
 	
 	
-	res.write('<br/><br/><br/><br/>Request came: ');
-	res.write(JSON.stringify(req.query.client_id));
+	// res.write('<br/><br/><br/><br/>Request came: ');
+	// res.write(req.query);
 
     res.end();
 });
@@ -31,7 +31,13 @@ restService.post("/login", function (req, res) {
     //console.log(req.body);
     if (req.body.username == 'user' && req.body.password == 'password') {
         //var url = new URL(req);
-		res.redirect('https://www.google.com');
+		var client_id = "795562711541-0cmson2f0dtblc5i8o7s9sdsnnc0rl0i.apps.googleusercontent.com"
+		var n = client_id.localeCompare(req.query.client_id);
+		if(n==0)
+		{
+		res.redirect('https://tutorials.botsfloor.com/how-to-build-a-hello-world-alexa-skill-bcea0d01ee8f');
+		}
+		else res.redirect('https://www.google.com');
     }
     else {
         res.write('<script>alert("Invalid user");</script>');
