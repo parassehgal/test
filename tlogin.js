@@ -22,7 +22,7 @@ restService.get("/login", function (req, res) {
 	
 	
 	res.write('<br/><br/><br/><br/>Request came: ');
-	res.write(JSON.stringify(req));
+	res.write(JSON.stringify(req.query.client_id));
 
     res.end();
 });
