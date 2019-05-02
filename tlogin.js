@@ -59,12 +59,21 @@ restService.get("/login", function (req, res) {
 restService.post("/login", function (req, res) {
     //console.log(req.body);
     if (req.body.username == 'user' && req.body.password == 'password') {
-        var code= 'testcode'+(new Date()).getTime();
-		var s=req.body.redirect_uri+'/r/oauth2-5a67a?code='+code+'&state='+req.body.state;
-		res.write(s);
-		res.end();
-		//res.redirect('https://oauth-redirect.googleusercontent.com/r/oauth2-5a67a?code=abcdefgh&state=req.state');
-		// res.redirect(s);
+        
+		try
+		{
+			var code= 'testcode'+(new Date()).getTime();
+			var s=req.body.redirect_uri+'/r/oauth2-5a67a?code='+code+'&state='+req.body.state;
+			res.write(s);
+			res.end();
+			//res.redirect('https://oauth-redirect.googleusercontent.com/r/oauth2-5a67a?code=abcdefgh&state=req.state');
+			// res.redirect(s);
+		}
+		catch(e)
+		{
+			res.write('Error occurred: '+e);
+			res.end();
+		}
     
 	}
     else {
